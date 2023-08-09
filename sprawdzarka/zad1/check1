@@ -1,0 +1,16 @@
+#!/bin/bash
+printf "\n\n##### student ID: $1 #####\n" > ./students/$1.out
+echo "g++ ./solutions/$1.cpp -w -o $1"
+if g++ ./solutions/$1.cpp -w -o ./solutions/$1;
+then
+for i in `seq 0 9`;
+do
+printf "\n\n***TEST $((i+1))***\ninput:\n`cat ./tests/$i.in` \noutput:\n" >> ./students/$1.out 
+./solutions/$1 < ./tests/$i.in >> ./students/$1.out
+printf "\ncorrect:\n`cat ./tests/$i.out`" >> ./students/$1.out
+done
+else
+printf "\n!!!Compilation failed!!!\n" >> ./students/$1.out
+fi
+cat ./students/$1.out >> ./final.out
+

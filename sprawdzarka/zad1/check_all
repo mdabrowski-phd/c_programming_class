@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ -e final.out ];
+then
+rm final.out
+fi
+for f in ./solutions/*_1.cpp
+do
+f=${f:12:8}
+name=$(echo $f | cut -f 1 -d '.')
+echo "Processing: $name ..."
+./check1  $name
+echo "Done: $name"
+done
+

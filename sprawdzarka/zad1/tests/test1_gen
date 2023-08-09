@@ -1,0 +1,7 @@
+#!/bin/bash
+g++ zad1.cpp -o zad1
+for i in `seq 0 9`;
+do
+echo $i >$i.in
+./zad1 <$i.in > $i.out
+done 
