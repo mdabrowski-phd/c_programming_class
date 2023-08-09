@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie}}
+%\chead{}
+\rhead{\textsc{Kolokwium 1, 6.04.2017}}
+
+\newcounter{zadanie}
+\newcommand{\zadanie}{\stepcounter{zadanie}\paragraph*{Zadanie \arabic{zadanie}. (10 pkt)}}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\small Kod źródłowy rozwiązania każdego z zadań zapisz z oddzielnym pliku *.cpp o nazwie \textsc{indeks}\_\textsc{nr zadania}. Programy nie kompilujące się otrzymują {\bf zero} punktów. Można korzystać z Internetu, jednak zabronione są wszelkie formy kontaktowania się. Powodzenia!
+
+\zadanie
+
+Dany jest ciąg liczb całkowitych zdefiniowany rekurencyjnie jako:
+\[
+C_0 = 1, \quad C_n = \frac{4(n-1)+2}{(n-1)+2} C_{n-1}.
+\]
+
+Napisz funkcję \textbf{rekurencyjną} służącą do obliczania kolejnych wyrazów ciągu. Zastosuj ją w~programie, który prosi użytkownika o~podanie liczby naturalnej $n$, a~następnie wypisuje odpowiadający jej wyraz ciągu. \textit {Wskazówka}: dzielenie wykonuj jako ostatnie. \textsc{Przykład}:
+\begin{verbatim}
+Podaj liczbe naturalna n: 3
+Wyraz ciagu o podanym indeksie to 5.
+\end{verbatim}
+
+\begin{verbatim}
+Podaj liczbe naturalna n: 8
+Wyraz ciagu o podanym indeksie to 1430.
+\end{verbatim}
+
+\zadanie
+Pan Antoni chce narysować prostokąt o minimalnym obwodzie, którego pole wynosi dokładnie $p\in \mathbb{N}$. Zakładamy również, że długości boków prostokąta $a,b\in \mathbb{N}$. Pomóż panu Antoniemu i znajdź minimalny obwód. Program powinien zwrócić na wyjściu minimalny obwód prostokąta wraz z jego wymiarami. \textsc{Przykład}:
+\begin{verbatim}
+Podaj pole p prostokata: 24
+Minimalny prostokat ma wymiary 4 na 6 i obwod 20.
+\end{verbatim}
+
+\zadanie
+Prowadzący ćwiczenia z programowania napisał na tablicy ciąg liczb całkowitych w losowej kolejności (zrobił to w sobie jedynie wiadomym celu). Nagle zadzwonił jego telefon i musiał wyjść z sali. W tym czasie niesforny student zmazał jedną z liczb i pomieszał kolejność pozostałych. Napisz program, który wypisze liczbę zmazaną przez studenta, co pozwoli prowadzącemu na szybką reakcję.
+\vspace{0.2 cm}
+
+Po uruchomieniu programu użytkownik podaje liczbę $n \geq 1$. Następnie wczytuje do programu dwa ciągi liczb całkowitych $p_i$ oraz $s_j$ o długościach odpowiednio $n$ oraz $n-1$, wypisane przez prowadzącego i studenta ($-10^5\leq p_i, s_j\leq 10^5$). Możesz założyć, że liczby po psocie studenta odpowiadają liczbom pozostawionym przez prowadzącego ćwiczenia, oczywiście z dokładnością do innego porządku liczb i brakującego elementu.
+\textsc{Przykład}:
+\begin{verbatim}
+Podaj dlugosc n ciagu prowadzacego: 8
+Ciag prowadzacego cwiczenia: 1 3 -2 2 -5 3 6 -2
+Ciag niesfornego studenta:  -5 3 -2 6 -2 1 2
+Niesforny student zmazal liczbe 3.
+\end{verbatim}
+
+
+\end{document}
