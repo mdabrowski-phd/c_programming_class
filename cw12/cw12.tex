@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+\usepackage{multicol}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 12, 25.05.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} pojemniki STL, powtórzenie klas oraz działań na plikach.
+
+\begin{enumerate}
+
+\item \textbf{Supermarket}\\
+Napisz klasę \textsf{Koszyk} reprezentującą kasę sklepową i obliczającą koszt zakupów pojedynczego
+klienta. Klasa powinna zapewniać następujące operacje:
+\begin{itemize}
+\item zerowanie przed rozpoczęciem obsługi kolejnego klienta — funkcja \textsf{void zeruj()}
+\item dodanie nazwy i ceny towaru — funkcja \textsf{void dodaj(string nazwa, double wartosc)}
+\item obliczenie łącznej należności za wszystkie zakupione towary — funkcja \textsf{double suma()}
+\item wypisanie na standardowe wyjście listy zakupów — funkcja \textsf{void lista()}. Jeżeli
+funkcją \textsf{dodaj} wprowadzono kilka takich samych przedmiotów, to w wydruku należy w pojedynczym
+wierszu wypisać ich łączna wartość.
+\end{itemize}
+\textit{Wskazówka}: użyj pojemnika \textsf{<map>} z biblioteki STL.
+
+\item \textbf{Histogram próby losowej}\\
+Napisz klasę \textsf{Histogram} reprezentującą jednowymiarowy histogram o binach jednakowej szerokości.
+Zaimplementuj:
+\begin{itemize}
+\item konstruktor pozwalający na zadanie przedziału histogramowania i liczby binów oraz zerujący liczby
+zliczeń we wszystkich binach.
+\item funkcję składową \textsf{reset} zerującą liczby zliczeń we wszystkich binach.
+\item funkcję składową \textsf{insert} zwiększającą o jeden liczbę zliczeń w binie, w którym wypada liczba
+rzeczywista zadana argumentem funkcji.
+\item funkcję składową \textsf{count}, która wywołana bez argumentu zwraca całkowitą liczbę zliczeń w histogramie,
+a wywołana z argumentem całkowitym zwraca liczbę zliczeń w binie o zadanym numerze.
+\item funkcję składową \textsf{print} wypisującą liczby zliczeń we wszystkich binach do zadanego strumienia
+wyjściowego. Dane kolejnych binów powinny znajdować się w kolejnych wierszach, a każdy wiersz
+powinien zawierać numer binu oraz odpowiadającą mu liczbę zliczeń.
+\end{itemize}
+Następnie napisz program, który losuje 100 000 liczb rzeczywistych, z których każda jest sumą dwóch
+liczb losowych z rozkładu płaskiego zawartego w przedziale od 0 do 1. Sporządź histogram tej próby losowej
+dobierając przedział histogramowania oraz liczbę binów tak, aby jak najlepiej oddać kształt otrzymanego
+rozkładu prawdopodobieństwa. \textit{Wskazówka}: uzyskany histogram wydrukuj na standardowe wyjście, a następnie
+wykreśl go przy pomocy programu \textsf{gnuplot}, pisząc na przykład:
+\textsf{plot ''histogram.txt'' with boxes}
+
+\newpage
+
+\item \textbf{Kodowanie symetryczne}\\
+W plikach tekstowych każdy znak zapisany jest jako jednobajtowa liczba, zwana kodem znaku.
+Jedną z metod szyfrowania wiadomości jest zastąpienie kodu każdego znaku jego bitową różnicą symetryczną
+(\textsc{XOR}) z zadaną jednobajtową liczbą, zwaną kluczem. Aby odczytać wiadomość,
+wystarczy ponownie wziąć bitową różnicę symetryczną zaszyfrowanych kodów z tym samym kluczem.
+Zaszyfrowane wiadomości są zapisywane przy pomocy liczb oddzielonych spacjami. Szyfrowanie odbywa się znak po znaku, włączając spacje, tabulatory, znaki końca linii, itp.
+Napisz program szyfrujący i rozszyfrowujący wiadomości tekstowe przy pomocy różnicy symetrycznej
+z kluczem. Wiadomości, zarówno zaszyfrowane jak i niezaszyfrowane, zapisane są w plikach tekstowych. Program
+powinien przyjmować cztery argumenty wywołania. Pierwszy to klucz, drugi to \textsf{e} lub \textsf{d} odpowiednio
+dla szyfrowania i rozszyfrowywania, zaś trzeci i czwarty to nazwy plików wejściowego i wyjściowego.
+\textit{Wskazówka}: operator \textsc{XOR} zapisujemy przy pomocy znaku \textsf{\^{}}.
+
+\item \textbf{Dane pomiarowe}\\
+Plik tekstowy z danymi ma następującą strukturę: każda liczba zapisana jest w formacie naukowym na 8 znakach, a pomiędzy liczbami znajdują się pojedyncze spacje. Plik nie zawiera pustych linii, jednak liczba kolumn ani wierszy nie jest z góry znana. Przyjmujemy jednak, że w pliku znajduje się przynajmniej jedna liczba. Napisz program, który na końcu każdego wiersza dopisze sumę wszystkich liczb z tego wiersza, a na końcu każdej kolumny dopisze sumę wszystkich liczb z tej kolumny. Oprócz tego na przecięciu dopisanych wiersza i kolumny powinna znaleźć się suma wszystkich liczb z oryginalnego pliku. Program powinien czytać dane ze standardowego wejścia, a wynik wypisywać na standardowe wyjście.
+\begin{multicols}{2}
+\textsc{Plik wejściowy:}
+\begin{verbatim}
+-1.0e+00  2.0e+01
+ 3.0e+01 -4.0e+00
+
+\end{verbatim}
+\textsc{Plik wyjściowy:}
+\begin{verbatim}
+-1.0e+00  2.0e+01  1.9e+01
+ 3.0e+01 -4.0e+00  2.6e+01
+ 2.9e+01  1.6e+00  4.5e+01
+\end{verbatim}
+\end{multicols}
+
+\end{enumerate}
+
+\vspace{0.3cm}
+\small \textsc{Zadań domowych wyjątkowo brak.} Kolokwium dziś o godz. 17:00. Powodzenia!
+\end{document}

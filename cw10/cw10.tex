@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 10, 11.05.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} klasy, konstruktor, destruktor, funkcje zaprzyjaźnione.
+
+\begin{enumerate}
+
+\item \textbf{Dwuwymiarowy wektor}\\
+Napisz klasę \textsf{Vector} reprezentującą dwuwymiarowy wektor. Zaimplementuj: 1) konstruktor bezargumentowy inicjalizujący współrzędne kartezjańskie wektora zerami oraz konstruktor dwuargumentowy inicjalizujący je swoimi argumentami; 2) funkcję składową \textsf{length} zwracającą długość wektora; 3) jednoargumentowy operator \textsf{-} oznaczający wektor przeciwny do danego; 4) operatory dodawania i odejmowania dwóch wektorów oraz operatory \textsf{+=} i \textsf{-=}; 5) operatory lewo- i prawostronnego mnożenia wektora przez liczbę oraz operator \textsf{*=}; 6) operator \textsf{*} iloczynu skalarnego dwóch wektorów; 7) operator \textsf{<<} wypisywania współrzędnych wektora do strumienia typu \textsf{ostream} oraz operator \textsf{>>} wczytywania współrzędnych ze strumienia \textsf{istream}. Współrzędne wektora zapisujemy jako dwie liczby oddzielone spacją.
+
+\item \textbf{Kwestionariusz osobowy}\\
+Napisz klasę \textsf{Name}, której obiekt pamięta imię i nazwisko. Zaimplementuj: 1) konstruktor bezargumentowy inicjalizujący imię i nazwisko łańcuchami pustymi; 2) dwuargumentowy konstruktor inicjalizujący imię i nazwisko swoimi argumentami; 3) funkcję składową \textsf{initials} zwracającą łańcuch zawierający inicjały. Przyjmij dla uproszczenia, że imiona i nazwiska są jednoczłonowe; 3) operator \textsf{<} wyznaczający kolejność alfabetyczną. Operator powinien porównywać najpierw nazwiska, a jeżeli są takie same, to imiona; 4) operator \textsf{<<} wypisujący imię i nazwisko do strumienia typu \textsf{ostream} oraz operator \textsf{>>} wczytujący je ze strumienia \textsf{istream}.
+
+\item \textbf{Łączenie rezystancji}\\
+Napisz klasę \textsf{Resistor} reprezentującą opornik o zadanym oporze. Zaimplementuj: 1) funkcję składową \textsf{set} ustawiającą opór opornika. Deklaracja: \textsf{void Resistor::set (double resistance)}; 2) funkcję zaprzyjaźnioną \textsf{resistance} zwracającą opór opornika. Deklaracja: \textsf{double resistance (const Resistor \&resistor)}; 3) funkcje zaprzyjaźnione \textsf{serial} i \textsf{parallel} tworzące oporniki odpowiadające szeregowemu i równoległemu połączeniu dwóch oporników. Deklaracja: \textsf{Resistor serial (const Resistor \&first, const Resistor \&second); Resistor parallel (const Resistor \&first, const Resistor \&second)}. Napisz program, który wczytuje ze standardowego wejścia dwa opory, a następnie wypisuje na standardowe wyjście opór powstały z ich szeregowego oraz równoległego połączenia.
+
+\item \textbf{Odwrócony \textsc{Pan Tadeusz} 3 *}\\
+Napisz klasę \textsf{Stack} reprezentującą stos łańcuchów tekstowych. Zaimplementuj: 1) konstruktor bezargumentowy; 2) funkcję składową \textsf{push} odkładającą element na stos; 3) funkcję składową \textsf{pop} zdejmującą element ze stosu i zwracającą informację o tym, czy operacja się powiodła, to znaczy czy stos nie był pusty; 4) destruktor zwalniający całą pamięć używaną przez stos. Napisz program, który wczytuje ciąg słów, a następnie wypisuje je w odwrotnej kolejności, oddzielone spacjami. Program przetestuj na tekście \textit{Pana Tadeusza} i \textit{Hamleta}.
+
+
+\newpage
+\rhead{\textsc{Zadania domowe 10}}
+
+\item \textbf{Liczby wymierne jako ułamki}\\
+Napisz klasę \textsf{Rat} reprezentującą liczby wymierne \textsf{p/q}. Liczby \textsf{p} i \textsf{q} powinny być pamiętane jako względnie pierwsze z \textsf{q} dodatnim. Zaimplementuj: 1) konstruktor, który można wywoływać bez argumentów lub z jednym albo dwoma argumentami całkowitymi. W pierwszym przypadku tworzony obiekt powinien być inicjalizowany wartością zero, w drugim liczbą całkowitą, a w trzecim ilorazem dwóch argumentów; 2) funkcje składowe \textsf{numerator} i \textsf{denominator} zwracające odpowiednio licznik i mianownik liczby; 3) operator konwersji do typu \textsf{double}; 4) jednoargumentowy operator \textsf{-} oznaczający liczbę przeciwną; 5) operator \textsf{<}; 6) operator preinkrementacji; 7) operatory \textsf{+=} i \textsf{-=}; 8) operatory dodawania i mnożenia; 9) operator \textsf{<<} wypisujący reprezentowaną liczbę wymierną do strumienia typu \textsf{ostream} oraz operator \textsf{>>} wczytujący tę liczbę ze strumienia typu \textsf{istream}. Konstruktor i operator \textsf{>>} powinny działać poprawnie również wtedy, gdy podane \textsf{p} i \textsf{q} nie są względnie pierwsze lub \textsf{q} jest ujemne.
+
+\item \textbf{Relatywistyczne prawo składania prędkości}\\
+Napisz klasę \textsf{Velocity} reprezentującą prędkość relatywistyczną w ruchu jednowymiarowym. Zaimplementuj: 1) konstruktor, który można wywołać bez argumentów lub z jednym argumentem rzeczywistym. W pierwszym przypadku tworzony obiekt powinien być inicjalizowany wartością zero, a w drugim wartością podaną jako argument; 2) metodę \textsf{gamma} zwracającą wartość czynnika Lorentza; 3) operator \textsf{+=} zgodny z relatywistycznym prawem składania prędkości; 4) operator dodawania zgodny z relatywistycznym prawem składania prędkości; 5) operator \textsf{<<} wypisujący prędkość do strumienia typu \textsf{ostream} oraz operator \textsf{>>} wczytujący prędkość ze strumienia typu \textsf{istream}.
+
+\item \textbf{Wzór Herona na pole trójkąta}\\
+Napisz klasę \textsf{Triangle} reprezentującą trójkąt o zadanych długościach boków. Zaimplementuj: 1) konstruktor trójargumentowy inicjalizujący długości boków swoimi argumentami; 2) funkcję składową \textsf{scale} przekształcającą trójkąt przez podobieństwo w skali zadanej swoim argumentem; 3) funkcję zaprzyjaźnioną \textsf{area}zwracającą pole trójkąta. Napisz program, który wczytuje długości boków trójkąta, wypisuje pole, a następnie wczytuje liczbę rzeczywistą i wypisuje pole wyjściowego trójkąta przekształconego przez podobieństwo w skali zadanej tą liczbą. \textit{Wskazówka}: Pole trójkąta S wyraża się przez długości boków a, b, c wzorem Herona:
+$S=\sqrt{p(p-a)(p-b)(p-c)}$, gdzie p jest połową obwodu.
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

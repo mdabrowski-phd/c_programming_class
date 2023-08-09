@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 14, 8.06.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} podsumowanie wiadomości o C++, projekt -- symulacja.
+
+\begin{enumerate}
+
+\item \textbf{Symulacja kolejki w supermarkecie}\\
+Bank X chce umieścić swój bankomat w supermarkecie Y. Dyrekcja
+supermarketu martwi się jednak, czy kolejki ustawiające się do bankomatu nie będą zaburzały
+przepływu klientów w sklepie i tym zmniejszały wielkość obrotów w kasach supermarketu.
+Rozważają więc ustalenie limitu osób oczekujących w kolejce do bankomatu. Przedstawiciele
+banku chcieliby zaś oszacować, jak długo klient będzie czekał w kolejce. My zaś zostaliśmy
+poproszeni o napisanie programu symulującego całą sytuację tak, aby ułatwić zainteresowanym proces decyzyjny.
+
+\vspace{0.1cm}
+Program symulacyjny powinien pozwalać użytkownikowi na określenie parametrów:
+\begin{itemize}
+\item \textsf{maksymalnego rozmiaru kolejki},
+\item \textsf{liczby symulowanych godzin},
+\item \textsf{średniej liczby klientów na godzinę}.
+\end{itemize}
+Program powinien realizować symulację w pętli, której każdy cykl
+reprezentuje jedną minutę czasu symulowanego. W każdym takim minutowym cyklu program
+powinien wykonać następujące operacje:
+\begin{enumerate}
+\item Sprawdzić, czy pojawił się nowy klient. Jeśli tak, dołączyć go do kolejki, o ile nie jest
+jeszcze pełna -- jeśli jest, odesłać klienta do domu.
+\item Jeśli w danym cyklu zakończyła się obsługa klienta przy bankomacie, wziąć pierwszego
+klienta z kolejki. Sprawdzić, jak długo będzie korzystał z bankomatu i ustawić odpowiednio
+licznik reprezentujący czas obsługi.
+\item Jeśli w danym cyklu twa wciąż obsługa poprzedniego klienta, zmniejszyć licznik reprezentujący czas obsługi
+o jeden.
+\item W każdym cyklu śledzić parametry symulacji: liczbę obsłużonych klientów, liczbę klientów
+odesłanych z braku miejsca w kolejce, łączny czas oczekiwania w kolejce i łączną liczbę
+oczekujących klientów.
+\end{enumerate}
+Po zakończeniu symulacji program powinien wyświetlać zestawienie zawierające:\\
+\textsf{liczbę klientów przyjętych},
+\textsf{liczbę klientów obsłużonych},
+\textsf{liczbę klientów odesłanych},
+\textsf{średnią długość kolejki} oraz
+\textsf{średni czas oczekiwania}.
+
+Przedstawiciel zainteresowanego banku poinformował
+nas, że z prowadzonej statystyki wynikają następujące parametry obsługi: jedna trzecia klientów
+jest się w stanie obsłużyć przy bankomacie w ciągu mniej niż minuty, jedna trzecia -- w ciągu
+dwóch minut, a reszcie zajmuje to do trzech minut. Odstępy czasowe pomiędzy pojawianiem się
+nowych klientów w kolejce są losowe, ale średnia na godzinę wychodzi stała.
+
+\newpage
+
+\item \textbf{Symulacja kolejki w supermarkecie 2}\\
+Przetestuj program symulacyjny dla parametrów \textsf{(maksymalny rozmiar kolejki, liczba symulowanych godzin, średnia liczba klientów na godzinę)} wynoszących odpowiednio: \textsf{(10, 100, 15)}, \textsf{(10, 100, 30)} oraz \textsf{(20, 10, 30)}.
+
+\vspace{0.1cm}
+Zauważ, że podwojenie liczby klientów zgłaszających się do kolejki w ciągu godziny nie podwaja wcale średniego czasu oczekiwania -- ile wynosi ten czas? Jeszcze gorzej jest wydłużać kolejkę. W dodatku symulacja nie uwzględnia jeszcze jednego czynnika -- frustracji oczekujących, z których wielu zapewne po prostu zaniechałoby oczekiwania.
+
+\item \textbf{Symulacja kolejki w supermarkecie 3}\\
+Uruchom symulację kilkukrotnie dla krótszego czasu oczekiwania, na przykład z parametrami \textsf{(10, 4, 30)}. Otrzymane wyniki ilustrują rozmaite odchylenia od średnich, które dają się obserwować w krótszych okresach czasu mimo stałej liczby nowych klientów na godzinę. 
+
+\item \textbf{Symulacja kolejki w supermarkecie 4}\\
+Dyrekcja supermarketu przeprowadziła analizę z której wynika, że klienci nie lubią czekać
+w kolejce dłużej niż minutę. Korzystając z napisanego programu symulacyjnego znajdź
+taką wartość średniej liczby klientów na godzinę, dla której średni czas oczekiwania w kolejce
+wyniesie minutę (dla czasów co najmniej 100 godzin).
+
+\item \textbf{Symulacja kolejki w supermarkecie 5 *}\\
+Dyrekcja supermarketu chciałby wiedzieć co stałoby się, gdyby obok bankomatu postawić drugi.
+Zmodyfikuj program symulacyjny tak, aby obsługiwał dwie kolejki. Załóż
+przy tym, że klient będzie dołączał do kolejki pierwszej, jeśli będzie w niej mniej oczekujących
+niż w kolejce drugiej -- w przeciwnym razie będzie wybierać kolejkę drugą. Ponownie
+znajdź taką wartość liczby klientów na godzinę, która da średni czas oczekiwania rzędu
+minuty.
+
+\vspace{0.1cm}
+Zauważ, że jest to problem nieliniowy w tym sensie, że podwojenie liczby bankomatów
+wcale nie podwaja liczby klientów obsługiwanych w ciągu godziny przy założeniu
+maksymalnie jednominutowego oczekiwania.
+
+\item \textbf{Symulacja kolejki w supermarkecie 6 **}\\
+Zmodyfikuj program symulacyjny tak, aby obsługiwał $N$ kolejek, gdzie liczba $N$ jest podawana przez użytkownika na standardowe wejście. Ponownie
+znajdź taką wartość liczby klientów na godzinę, która da średni czas oczekiwania rzędu
+minuty.
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}. Powodzenia na egzaminie!
+\end{document}

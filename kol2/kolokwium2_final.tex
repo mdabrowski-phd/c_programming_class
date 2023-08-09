@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{multicol}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\setlength{\parindent}{0pt}
+
+\lhead{\textsc{Programowanie}}
+%\chead{}
+\rhead{\textsc{Kolokwium 2, 25.05.2017}}
+
+\newcounter{zadanie}
+\newcommand{\zadanie}{\stepcounter{zadanie}\paragraph*{Zadanie \arabic{zadanie}. (10 pkt)}}
+
+\begin{document}
+
+\small Kod źródłowy rozwiązania każdego z zadań zapisz z oddzielnym pliku *.cpp o nazwie \textsc{indeks}\_\textsc{nr zadania}. Programy nie kompilujące się otrzymują {\bf zero} punktów. Można korzystać z Internetu, jednak zabronione są wszelkie formy kontaktowania się. Powodzenia!
+
+\zadanie
+Napisz klasę \textsf{Naukowiec} zawierającą nazwisko, liczbę publikacji oraz cytowań naukowca. Klasa powinna zapewniać następujące operacje:
+\begin{itemize}
+\item konstruktor trójargumentowy inicjalizujący nazwisko, liczbę publikacji oraz cytowań,
+\item funkcję składową \textsf{indeks} zwracającą średnią liczbę cytowań na jedną publikację,
+\item funkcję składową \textsf{publikuj} zwiększającą liczbę publikacji o zadaną wartość,
+\item operator preinkrementacji \textsf{++} zwiększający o 1 liczbę cytowań naukowca,
+\item operator \textsf{<} porównujący naukowców. Lepszy jest naukowiec z większą liczbą cytowań, a jeżeli są takie same, to ten dla którego funkcja \textsf{indeks} zwraca większą wartość.
+\item operator \textsf{<<} wypisywania danych naukowca do strumienia typu \textsf{ostream} oraz operator \textsf{>>} wczytywania danych naukowca ze strumienia \textsf{istream}.
+\end{itemize}
+\textsc{Przykład użycia klasy:}
+\begin{verbatim}
+int main() {
+   Naukowiec Bogdan("Bogdan",50,300), Czeslaw;
+   cin >> Czeslaw;
+   cout << Czeslaw.indeks();
+   Bogdan.publikuj(3);
+   if(Bogdan < ++Czeslaw)
+      cout << Czeslaw << endl;
+   else
+      cout << Bogdan << endl;
+}
+\end{verbatim}
+
+\zadanie
+Sprawdzanie kolokwium z programowania to bardzo ciężka praca. Wyniki kolokwium znajdują się w pliku tekstowym, zapisanym w następującym formacie: w każdej linii znajduje się jedno imię i jedno nazwisko studenta, a następnie liczby punktów za kolejne zadania. Liczba zadań ani osób nie jest z góry znana, wiadomo jednak, że liczba zadań jest dla wszystkich studentów taka sama oraz plik z danymi nie jest pusty. Napisz program, który na podstawie tego pliku obliczy i wypisze do pliku \textsf{wyniki.txt} całkowitą liczbę punktów zdobytych przez każdego studenta oraz średnią liczbę punktów z każdego zadania. Nazwa pliku zawierającego dane wejściowe powinna być podawana jako argument wywołania programu. \textit{Wskazówka}: możesz użyć pojemnika \textsf{<vector>} z biblioteki STL oraz metod \textsf{clear} i \textsf{str} dla obiektu strumienia \textsf{istringstream}. \textsc{Przykład wejścia i wyjścia:} 
+\begin{multicols}{2}
+\textsc{Plik wejściowy:} (\textsf{dane.txt})
+\begin{verbatim}
+Jakub Wedrowycz 1.5 0 0.5
+Semen Korczaszko 5.5 10 3.5
+Jozef Paczenko 4 5 6.5
+
+\end{verbatim}
+\textsc{Plik wyjściowy:} (\textsf{wyniki.txt})
+\begin{verbatim}
+Jakub Wedrowycz 2
+Semen Korczaszko 20
+Jozef Paczenko 15.5
+z1 4   z2 5   z3 3.5
+\end{verbatim}
+\end{multicols}
+
+\zadanie
+Napisz klasę \textsf{Statystyka} obliczająca średnią, odchylenie standardowe oraz medianę ciągu liczb o dowolnej długości. Klasa powinna udostępniać
+funkcje:
+\begin{itemize}
+\item \textsf{void dodaj (double x)} — uwzględnia w obliczeniach nową liczbę \textsf{x},
+\item \textsf{double srednia()} — przekazuje średnią arytmetyczną dotychczas zapamiętanych liczb,
+\item \textsf{double sigma()} — przekazuje odchylenie standardowe dotychczas zapamiętanych liczb,
+\item \textsf{double mediana()} — przekazuje wartość mediany dotychczas zapamiętanych liczb,
+\item \textsf{void zeruj()} — usuwa zapamiętane liczby (przywraca początkowy zbiór pusty).
+\end{itemize}
+
+Napisz program, który losuje $N$ liczb rzeczywistych z rozkładu płaskiego w przedziale $[-k,k]$, gdzie $N,k\in\mathbb{N}$ są argumentami wywołania programu. Program powinien zwracać na wyjściu średnią, odchylenie standardowe oraz medianę wylosowanych liczb. \textit{Wskazówka}: możesz użyć pojemnika \textsf{<vector>} z biblioteki STL oraz funkcji \textsf{atoi} z biblioteki \textsf{<cstdlib>}. \textsc{Przykład użycia klasy:}
+\begin{verbatim}
+int main() {
+   Statystyka stat;
+   for (int i = 0; i<10; i++)
+      stat.dodaj(i);
+   cout << stat.srednia() <<' '<< stat.sigma() <<' '<< stat.mediana();
+   stat.zeruj();
+}
+\end{verbatim}
+
+\end{document}

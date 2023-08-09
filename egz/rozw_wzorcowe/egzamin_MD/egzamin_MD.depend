@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1497620517 source:e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\egz\zadanie_md\naukowiec.cpp
+	<iostream>
+	"Naukowiec.h"
+
+1497620525 e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\egz\zadanie_md\naukowiec.h
+	<iostream>
+
+1497447539 source:e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\egz\zadanie_md\testnaukowiec.cpp
+	<iostream>
+	"Naukowiec.h"
+
+1497621579 source:e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\egz\zadanie_md\testnaukowcy.cpp
+	<iostream>
+	"Naukowiec.h"
+	"Naukowcy.h"
+
+1497628614 source:e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\egz\zadanie_md\naukowcy.cpp
+	<iostream>
+	<vector>
+	"Naukowiec.h"
+	"Naukowcy.h"
+
+1497620531 e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\egz\zadanie_md\naukowcy.h
+	<iostream>
+	<vector>
+

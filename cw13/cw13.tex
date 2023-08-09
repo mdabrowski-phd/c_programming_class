@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 13, 1.06.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} pliki nagłówkowe i źródłowe, kompilacja i konsolidacja.
+
+\begin{enumerate}
+
+\item \textbf{Prosty kalkulator 3}\\
+Napisz program zawierający funkcje \textsf{dodaj}, \textsf{odejmij}, \textsf{pomnoz} i \textsf{podziel}. Każda z nich powinna przyjmować dwie liczby całkowite i zwracać wynik działania. Utwórz prosty kalkulator korzystający z tych funkcji. Deklaracje funkcji umieść w pliku nagłówkowym, a ich kod źródłowy z pliku źródłowym, który będzie niezależny od reszty kodu kalkulatora.
+
+\item \textbf{Lista powiązana}\\
+Poniżej znajduje się kod \textsf{original.cpp} związany z listą powiązaną. Podziel kod na plik nagłówkowy oraz pliki źródłowe tak, aby nadawał się do wielokrotnego użycia.
+\begin{verbatim}
+#include <iostream>
+using namespace std;
+
+struct Node {
+	Node *p_next;
+	int value;};
+
+Node* addNode (Node* p_list, int value) {
+	Node *p_new_node = new Node;
+	p_new_node->value = value;
+	p_new_node->p_next = p_list;
+	return p_new_node;}
+
+void printList (const Node* p_list) {
+	const Node* p_cur_node = p_list;
+	while ( p_cur_node != NULL ) {
+		cout << p_cur_node->value << endl;
+		p_cur_node = p_cur_node->p_next;}}
+
+int main () {
+	Node *p_list = NULL;
+	for ( int i = 0; i < 10; ++i ) {
+		int value;
+		cout << "Enter value for list node: ";
+		cin >> value;
+		p_list = addNode( p_list, value );}
+	printList( p_list );}
+\end{verbatim}
+
+\newpage
+
+\item \textbf{Kwestionariusz osobowy 2}\\
+Korzystając z klasy \textsf{Name} (ćwiczenia 10) napisz program, który wczytuje ze standardowego wejścia listę imion i nazwisk, a potem wypisuje je na standardowe wyjście najpierw w kolejności alfabetycznej, a następnie w kolejności alfabetycznej inicjałów (w tym celu napisz dodatkowo własną funkcję porównującą, której użyjesz jako argumentu funkcji \textsf{sort}). Kod projektu podziel na plik nagłówkowy i pliki źródłowe. Plik nagłówkowy z deklaracją klasy:
+\begin{verbatim}
+class Name {
+	public:
+		Name ();
+		Name (const string &given,const string &family);
+		string initials () const;
+		friend bool operator< (const Name &first,const Name &second);
+		friend ostream &operator<< (ostream &stream,const Name &Name);
+		friend istream &operator>> (istream &stream,Name &Name);
+	private:
+		string given,family;};
+\end{verbatim}
+
+\item \textbf{Figury geometryczne}\\
+Dana jest lista figur geometrycznych, będących obiektami wirtualnej klasy bazowej \textsf{Figure} (ćwiczenia 11), w następującym formacie:
+\begin{verbatim}
+circle red 5
+rectangle blue 2 3
+\end{verbatim}
+
+Napisz program, który wczytuje tę listę ze standardowego wejścia, a następnie wypisuje na standardowe wyjście tę samą listę posortowaną w kolejności rosnącego pola powierzchni. Przy każdej figurze powinno być dodatkowo wypisane jej pole powierzchni. Podziel kod na pliki nagłówkowe (osobne dla klasy bazowej \textsf{Figure} oraz każdej z klas pochodnych \textsf{Circle} i \textsf{Rectangle}) i pliki źródłowe (także osobne dla każdej z klas).
+\end{enumerate}
+\vspace{1cm}
+\small Zadań domowych wyjątkowo brak. Pytania można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

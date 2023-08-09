@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{multicol}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\setlength{\parindent}{0pt}
+
+\lhead{\textsc{Programowanie}}
+%\chead{}
+\rhead{\textsc{Przygotowanie do Egzaminu}}
+
+\newcounter{zadanie}
+\newcommand{\zadanie}{\stepcounter{zadanie}\paragraph*{Zadanie przygotowawcze}}
+
+\newcounter{rozw}
+\newcommand{\rozw}{\stepcounter{rozw}\paragraph*{Przykładowe rozwiązanie}}
+
+\begin{document}
+
+\small Jedno z zadań na egzaminie będzie korzystało z rozwiązania poniższego zadania. Zachęcamy do jego samodzielnego rozwiązania. Wzorcowy kod znajduje się na kolejnej stronie. \textsc{Powodzenia!}
+
+\zadanie
+Napisz klasę \textsf{Naukowiec} zawierającą nazwisko, liczbę publikacji oraz cytowań naukowca. Klasa powinna zapewniać następujące operacje:
+\begin{itemize}
+\item konstruktor trójargumentowy inicjalizujący nazwisko, liczbę publikacji oraz cytowań,
+\item funkcję składową \textsf{indeks} zwracającą średnią liczbę cytowań na jedną publikację,
+\item funkcję składową \textsf{publikuj} zwiększającą liczbę publikacji o zadaną wartość,
+\item operator preinkrementacji \textsf{++} zwiększający o 1 liczbę cytowań naukowca,
+\item operator \textsf{<} porównujący naukowców. Lepszy jest naukowiec z większą liczbą cytowań, a jeżeli są takie same, to ten dla którego funkcja \textsf{indeks} zwraca większą wartość.
+\item operator \textsf{<<} wypisywania danych naukowca do strumienia typu \textsf{ostream} oraz operator \textsf{>>} wczytywania danych naukowca ze strumienia \textsf{istream}.
+\end{itemize}
+\textsc{Przykład użycia klasy:}
+\begin{verbatim}
+int main() {
+   Naukowiec Bogdan("Bogdan",50,300), Czeslaw;
+   cin >> Czeslaw;
+   cout << Czeslaw.indeks();
+   Bogdan.publikuj(3);
+   if(Bogdan < ++Czeslaw)
+      cout << Czeslaw << endl;
+   else
+      cout << Bogdan << endl;
+}
+\end{verbatim}
+
+\newpage
+
+\rozw
+
+\begin{verbatim}
+class Naukowiec {
+      string _name;
+      int _publikacje, _cytowania;
+   public:
+      Naukowiec();
+      Naukowiec (const string &name, int publikacje, int cytowania);
+      double indeks();
+      void publikuj (int n);
+      Naukowiec &operator ++ ();
+      friend bool operator < (Naukowiec &first, Naukowiec &second);
+      friend ostream &operator << (ostream &stream, const Naukowiec &naukowiec);
+      friend istream &operator >> (istream &stream, Naukowiec &naukowiec);
+};
+
+Naukowiec::Naukowiec() {}
+
+Naukowiec::Naukowiec (const string &name, int publikacje, int cytowania):
+   _name (name), _publikacje (publikacje), _cytowania (cytowania) {}
+
+double Naukowiec::indeks() {
+   return double(_cytowania)/_publikacje; }
+
+void Naukowiec::publikuj (int n) {
+   _publikacje += n; }
+
+Naukowiec &Naukowiec::operator ++ () {
+   _cytowania++;
+   return *this; }
+	
+bool operator < (Naukowiec &first, Naukowiec &second) {
+   return first._cytowania < second._cytowania ||
+      (first._cytowania == second._cytowania && first.indeks() < second.indeks() ); }
+	
+ostream &operator << (ostream &stream, const Naukowiec &naukowiec) {
+   return stream << naukowiec._name <<' '<< naukowiec._publikacje <<' '
+      << naukowiec._cytowania; }
+
+istream &operator >> (istream &stream, Naukowiec &naukowiec) {
+   return stream >> naukowiec._name >> naukowiec._publikacje >> naukowiec._cytowania; }
+\end{verbatim}
+
+\end{document}

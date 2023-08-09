@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1494416258 source:e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\cw14\sol\supermarket\bank.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	"queue.h"
+
+1494417835 e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\cw14\sol\supermarket\queue.h
+
+1494417695 source:e:\dane\doktorat\programowanie c++\zadania\cwiczenia 2017\cw14\sol\supermarket\queue.cpp
+	"queue.h"
+	<cstdlib>
+

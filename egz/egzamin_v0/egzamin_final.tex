@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{multicol}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\setlength{\parindent}{0pt}
+
+\lhead{\textsc{Programowanie}}
+%\chead{}
+\rhead{\textsc{Egzamin, XX.06.2017}}
+
+\newcounter{zadanie}
+\newcommand{\zadanie}{\stepcounter{zadanie}\paragraph*{Zadanie \arabic{zadanie}. (10 pkt)}}
+
+\begin{document}
+
+\small Kod źródłowy rozwiązania każdego z zadań zapisz z oddzielnym pliku *.cpp o nazwie \textsc{indeks}\_\textsc{nr zadania}. Programy nie kompilujące się otrzymują {\bf zero} punktów. Można korzystać z Internetu, jednak zabronione są wszelkie formy kontaktowania się. Powodzenia!
+
+\zadanie
+Wiadomość została zakodowana w postaci strumienia tekstowego, który może być czytany znak po znaku. Składa się on z paczek dodatnich liczb całkowitych oddzielonych przecinkiem, możliwych do zapamiętania w języku C++ za pomocą typu \textsf{int}. Jednakże znak reprezentowany przez określoną liczbę całkowitą zależy od bieżącego trybu dekodowania. Istnieją trzy takie tryby: \textsf{wielkie litery}, \textsf{małe litery} i \textsf{znaki interpunkcyjne}. 
+
+\vspace{0.2cm}
+W trybie \textsf{wielkich liter} każda liczba całkowita reprezentuje wielką literę. Wartość modulo 27 oznacza literę w alfabecie łacińskim (gdzie 1 = A itd.).
+Tryb \textsf{małych liter} działa tak samo, lecz z małymi literami.
+W trybie \textsf{znaków interpunkcyjnych} liczba całkowita jest dzielona przez 9, a nie przez 27. Odpowiednie odwzorowanie znaków interpunkcyjnych na liczby podano w tabeli.
+
+\begin{table}[h]
+ \centering
+ \begin{tabular}{|c||c|c|c|c|c|c|c|c|}
+  \hline
+  liczba & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+  znak & ! & ? & , & . & spacja & ; & " & ' \\ \hline
+ \end{tabular}
+\end{table}
+
+Na początku każdej wiadomości aktywny jest tryb wielkich liter. Za każdym razem gdy operacja modulo (przez 27 lub 9 -- w zależności od trybu) zwraca wartość 0, tryb dekodowania ulega zmianie. Jeśli bieżącym trybem są wielkie litery, następuje zmiana na małe litery. Jeśli bieżącym trybem są małe litery, następuje zmiana na znaki interpunkcyjne. Wreszcie gdy używany jest tryb znaków interpunkcyjnych, wracamy do trybu wielkich liter. Napisz program dekodujący wiadomości, zakodowane według powyższego opisu.
+
+\end{document}

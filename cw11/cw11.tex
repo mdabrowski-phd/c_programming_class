@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 11, 18.05.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} dziedziczenie, klasy abstrakcyjne, funkcje wirtualne.
+
+\begin{enumerate}
+
+\item \textbf{Macierzowa optyka geometryczna}\\
+W optyce macierzowej każdy układ elementów optycznych ustawionych wzdłuż jednej osi opisany
+jest pewną macierzą \textsf{2x2}. W szczególności pusty odcinek o długości $d$ oraz cienka soczewka o ogniskowej
+$f$ reprezentowane są odpowiednio macierzami:
+\[
+S=
+  \begin{bmatrix}
+    1 & d \\
+    0 & 1
+  \end{bmatrix}
+  \quad \quad
+  L=
+  \begin{bmatrix}
+    1 & 0 \\
+    -1/f & 1
+  \end{bmatrix}
+\]
+Jeżeli na osi optycznej bezpośrednio za elementem opisanym macierzą $M_1$ stoi element opisany macierzą
+$M_2$, to układowi temu odpowiada macierz $M = M_2M_1$. Promień światła opisany jest dwuwymiarowym
+wektorem
+\[
+u=
+  \begin{bmatrix}
+    y \\
+    \alpha
+  \end{bmatrix}
+\]
+gdzie $y$ oraz $\alpha$ są odpowiednio odległością promienia od osi optycznej oraz kątem między promieniem a
+osią. Promień opisany wektorem $u_0$ po przejściu przez układ opisany macierzą $M$ przechodzi w promień
+opisany wektorem $u_1=Mu_0$.
+
+Napisz klasę \textsf{Ray} reprezentującą promień światła. Zaimplementuj w niej:
+1) bezargumentowy konstruktor zerujący $y$ oraz $\alpha$;
+2) dwuargumentowy konstruktor inicjalizujący $y$ oraz $\alpha$ swoimi argumentami;
+3) funkcje składowe \textsf{getDistance} oraz \textsf{getAngle} zwracające odpowiednio $y$ i $\alpha$.
+
+Napisz klasę \textsf{System} opisującą układ elementów optycznych. Zaimplementuj w niej bezargumentowy
+konstruktor inicjalizujący macierz układu macierzą jednostkowa.
+Jako funkcję zaprzyjaźnioną z klasą \textsf{System} zaimplementuj operator \textsf{*} odpowiadający składaniu dwóch
+układów ustawionych bezpośrednio jeden za drugim. Jako funkcję zaprzyjaźnioną z obiema klasami zaimplementuj
+operator \textsf{*} odpowiadający działaniu układu na promień.
+
+Z klasy \textsf{System} wywiedź klasę \textsf{Space} reprezentująca pusty odcinek osi optycznej. Zaimplementuj w
+niej jednoargumentowy konstruktor inicjalizujący długość odcinka swoim argumentem. Z klasy \textsf{System}
+wywiedź też klasę \textsf{Lens} reprezentującą soczewkę. Zaimplementuj w niej jednoargumentowy konstruktor
+inicjalizujący ogniskową swoim argumentem.
+
+Wszystkie klasy i funkcje powinny być napisane tak, aby działał następujący program:
+\begin{verbatim}
+int main(){
+Ray ray = Lens(50) * Space(150) * Lens(100) * Ray(0.1, 0);
+cout << ray.getAngle() << " " << ray.getDistance() << endl;
+return 0;}
+\end{verbatim}
+
+\newpage
+\rhead{\textsc{Zadania domowe 11}}
+
+\item \textbf{Definicja dowolnego ciągu}\\
+Zadeklaruj abstrakcyjną klasę \textsf{Sequence} reprezentującą ciąg matematyczny. Zadeklaruj w niej publiczny operator indeksowania zwracający żądany wyraz ciągu. Z klasy tej wyprowadź klasę \textsf{Arithmetic} reprezentującą ciąg arytmetyczny: $a_n=a_0+n\Delta$. Zdefiniuj dla niej konstruktor umożliwiający nadanie wartości parametrom $a_0$ oraz $\Delta$. Z klasy \textsf{Sequence} wyprowadź również klasę \textsf{Fibonacci} reprezentującą ciąg Fibonacciego. Klasy te powinny być tak napisane, aby można je było wykorzystać w programie:
+\begin{verbatim}
+int main(){
+Sequence arithmetic( 2., 3. );
+Sequence fibonacci;
+for ( int n = 0; n < 10; ++n ){
+cout << arithmetic[ n ] << " ";}
+cout << endl;
+for ( int n = 0; n < 10 ; ++n ){
+cout << fibonacci[ n ] << " ";}
+cout << endl;}
+\end{verbatim}
+
+\item \textbf{Pochodna dowolnej funkcji}\\
+Zadeklaruj obstrakcyjną klasę \textsf{Function} reprezentującą funkcję rzeczywistą zmiennej rzeczywistej. Zadeklaruj w niej wirtualny operator wywołania funkcji, który umożliwia obliczenie wartości dowolnej pochodnej funkcji w dowolnym punkcie. Jeżeli rząd pochodnej nie jest podany, to operator powinien zwracać wartość samej funkcji. Z klasy \textsf{Function} wyprowadź klasy \textsf{Exponential} oraz \textsf{Sinus} reprezentujące odpowiednio funkcje $\exp{(\alpha x)}$ oraz $\sin{(\omega x)}$. Zaimplementuj w nich konstruktory inicjalizujące wartości stałych $\alpha$ i $\omega$ oraz konkretyzacje operatora wywołania funkcji odziedziczonego z klasy \textsf{Function}. Wymienione klasy skonstruuj w taki sposób, aby można je było wykorzystać w programie:
+\begin{verbatim}
+int main(){
+Exponential exponential( 2.);
+Sine sine( 3.);
+Function& expo = exponential;
+Function& sinus = sine;
+cout << expo( 1. ) << endl;
+cout << sinus( 2. , 1 ) << endl;}
+\end{verbatim}
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}
