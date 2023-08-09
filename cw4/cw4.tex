@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 4, 23.03.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} funkcje, rekurencja, przeładowanie funkcji.
+
+\begin{enumerate}
+
+\item \textbf{Algorytm Euklidesa}\\
+Napisz funkcję znajdującą największy wspólny dzielnik dwóch liczb naturalnych metodą Euklidesa. Mając dwie liczby, większą z nich zastępujemy resztą z dzielenia przez mniejszą. Procedurę powtarzamy, aż jedna z liczb stanie się równa zero. Wtedy druga jest poszukiwanym wspólnym dzielnikiem wyjściowych liczb.
+
+\item \textbf{Rekurencyjna silnia}\\
+Napisz program, który wczytuje ze standardowego wejścia liczbę naturalną i wypisuje na standardowe wyjście jej silnię. Użyj funkcji rekurencyjnej.
+
+\item \textbf{Ciąg Fibonacciego}\\
+Ciąg Fibonacciego to ciąg liczb, w którym pierwszy wyraz jest równy 0, drugi jest równy 1 a każdy następny jest sumą dwóch poprzednich:
+\[
+F_0=1 \quad \quad F_1=1 \quad \quad F_n=F_{n-1}+F_{n-2}
+\]
+Napisz program wyznaczający $n$-ty wyraz ciągu najpierw przy użyciu funkcji iteracyjnej, a następnie rekurencji. Które podejście jest łatwiejsze?
+
+\item \textbf{Czy posortowana?}\\
+Napisz funkcję typu \textit{bool}, której argumentami są tablica oraz liczba jej elementów. Funkcja powinna ustalać, czy dane w tablicy są posortowane. Rozwiązanie powinno wymagać użycia tylko pojedynczej pętli (bez zagnieżdżania).
+
+\item \textbf{Szukanie sekwencyjne}\\
+Napisz funkcję, która otrzymuje tablicę liczb całkowitych oraz wartość poszukiwaną i zwraca liczbę wystąpień tej wartości w podanej tablicy. Rozwiąż problem najpierw przy użyciu iteracji, a następnie rekurencji.
+
+\item \textbf{Sortowanie przez scalanie *}\\
+Sortowanie przez scalanie to rekurencyjny algorytm sortowania danych, stosujący metodę \textit{dziel i zwyciężaj}, o złożoności czasowej lepszej niż dla poznanych poprzednio algorytmów sortowania. Opis działania algorytmu jest przedstawiony np. na stronie: \begin{verbatim}http://main.edu.pl/pl/user.phtml?op=lesson&n=24&page=algorytmika
+\end{verbatim}
+Korzystając z zamieszczonego tam opisu, postaraj się zaimplementować program sortujący, korzystając z funkcji dokonującej podziału oraz złączającej posortowane ciągi liczb całkowitych. W razie problemów spróbuj zrozumieć zamieszczone rozwiązanie.
+
+\newpage
+\rhead{\textsc{Zadania domowe 4}}
+
+\item \textbf{Wszystko jest funkcją}\\
+Użycie funkcji z jednej strony poprawia czytelność kodu programu, z drugiej pozwala na zastosowanie istniejącego kodu wprost do nowego problemu (np. występującego na kolokwium). Przepisz kilka z napisanych przez Ciebie programów tak, aby wykorzystywały funkcje.
+
+\item \textbf{Pierwotne trójki Pitagorasa}\\
+Trójką pitagorejską nazywamy każde trzy liczby naturalne $a,b,c$ takie, że $a^2+b^2=c^2$. Trójkę nazywamy pierwotną, jeżeli liczby $a,b,c$ są względnie pierwsze. Można pokazać, że każda trójka pierwotna jest postaci:
+\[
+a=m^2-n^2 \quad \quad b=2mn \quad \quad c=m^2+n^2
+\]
+gdzie $m$ i $n$ są względnie pierwszymi liczbami naturalnymi, z których jedna jest parzysta. Napisz program, który wczytuje ze standardowego wejścia liczbę naturalną $C$, a następnie wypisuje na standardowe wyjście wszystkie pierwotne trójki pitagorejskie, dla których $c<C$.
+
+\item \textbf{Ocenianie kształtujące}\\
+W szkolnych klasach 1--3 popularną metodą oceniania sprawdzianów jest ich samodzielne sprawdzanie przez dzieci przez porównanie z odpowiedzią wzorcową na tablicy (małe dzieci nie oszukują). Napisz funkcję, która oblicza liczbę błędów popełnioną przez dziecko podczas pisania dyktanda. Funkcja powinna przyjmować jako argumenty dwa łańcuchy tekstowe -- jeden napisany przez nauczyciela, drugi przez ucznia. Zweryfikuj działanie funkcji na przykładowym tekście wprowadzanym z klawiatury.
+
+\item \textbf{Rekurencyjna potęga}\\
+Napisz program w sposób rekurencyjny obliczający funkcję potęgową $x^y$.
+
+\item \textbf{Parzystość łańcucha binarnego *}\\
+Rozważ tablicę reprezentującą łańcuch binarny, w której elementy mają wartości $0$ lub $1$. Napisz funkcję typu \textit{bool} ustalającą, czy łańcuch binarny jest nieparzysty (czyli posiada nieparzystą liczbę bitów równych $1$). \textit{Wskazówka}: pamiętaj, że funkcja rekurencyjna będzie zwracać true (nieparzystość) lub false (parzystość), a nie liczbę bitów równych 1. Rozwiąż problem najpierw przy użyciu iteracji, a następnie rekurencji.
+
+\item \textbf{Rekurencyjne szukanie (binarne) *}\\
+Napisz funkcję rekurencyjną, która pobiera posortowaną tablicę, element docelowy oraz odszukuje ten element w tablicy (jeśli nie znajdzie elementu, powinna zwrócić $-1$). Jak szybkie może być takie szukanie? Czy można osiągnąć lepszy wynik bez potrzeby sprawdzania każdego elementu?
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

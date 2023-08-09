@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 8, 27.04.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} klasa <string>, operacje na plikach, argumenty main().
+
+\begin{enumerate}
+
+\item \textbf{Statystyka tekstu}\\
+Napisz funkcję, która zlicza wystąpienia danego znaku w łańcuchu tekstowym. Do funkcji nie wolno przekazywać obiektów klasy <string>.
+
+\item \textbf{Wymazywanie znaków białych}\\
+Strumień wejściowy zawiera słowa oddzielone różnymi liczbami znaków białych. Napisz funkcję, która przepisuje te słowa do strumienia wyjściowego oddzielając je pojedynczymi spacjami.
+
+\item \textbf{Statystyka tekstu 2}\\
+Napisz program obliczający liczbę słów oraz średnią długość słowa w zadanym pliku tekstowym. Program powinien czytać plik ze standardowego wejścia, a wynik wypisywać na standardowe wyjście. Program przetestuj na tekście \textit{Pana Tadeusza} i \textit{Hamleta}.
+
+\item \textbf{Implementacja funkcji \textsc{find}}\\
+Napisz program wypisujący na standardowe wyjście te linie ze standardowego wejścia, które zawierają zadane słowo podane jako argument wywołania programu.
+
+\item \textbf{Analiza literowa tekstu}\\
+Napisz program liczący wystąpienia każdej litery alfabetu w zadanym pliku tekstowym. Nie uwzględniaj wielkości liter ani znaków nie będących literami. Wynikiem powinna być tabela zawierająca w jednej kolumnie litery, a w drugiej liczby wystąpień. Dane należy czytać ze standardowego wejścia, a wynik wypisywać na standardowe wyjście. Program przetestuj na tekście \textit{Pana Tadeusza} i \textit{Hamleta}.
+
+\item \textbf{Plik tekstowy kolumnowy *}\\
+Napisz program wypisujący na standardowe wyjście n-tą kolumnę pliku tekstowego czytanego ze standardowego wejścia z zachowaniem podziału na linie. Kolumny są to ciągi znaków oddzielone spacjami lub tabulatorami. Jeżeli dana linia zawiera mniej niż n kolumn, to wypisana powinna być linia pusta. Numer kolumny powinien być podawany jako argument wywołania programu.
+
+\item \textbf{Implementacja funkcji \textsc{replace}}\\
+Napisz program, który w każdej linii pliku tekstowego zastępuje wszystkie wystąpienia zadanego ciągu znaków innym ciągiem znaków. Nazwa pliku, słowo zastępowane oraz zastępujące powinny być kolejnymi argumentami wywołania programu.
+
+\newpage
+\rhead{\textsc{Zadania domowe 8}}
+
+\item \textbf{Tekst drukowanymi literami}\\
+Napisz funkcję, która w danym łańcuchu zamienia wszystkie małe litery na wielkie.
+
+\item \textbf{Licznik wystąpień słowa}\\
+Napisz funkcję, która zlicza wystąpienia danego słowa w strumieniu wejściowym. Następnie napisz program, który przyjmuje jako argumenty nazwę pliku oraz słowo, a następnie wypisuje na standardowe wyjście liczbę wystąpień słowa w pliku.
+
+\item \textbf{Palindromy liczbowo-literowe}\\
+Napisz funkcję sprawdzającą, czy dany łańcuch tekstowy jest palindromem. Znaczenie mają tylko występujące w napisie litery, zaś pozostałe znaki, jak cyfry, znaki interpunkcyjne i znaki białe, są ignorowane. Wielkość liter nie ma znaczenia.
+
+\item \textbf{Statystyka tekstu 3}\\
+Standardowy strumień wejściowy zawiera wyłącznie liczby naturalne i słowa złożone z małych liter alfabetu. Słowa i liczby są przemieszane miedzy sobą i oddzielone pojedynczymi spacjami. Napisz program, który odczytuje całą zawartość standardowego wejścia i wypisuje na standardowe wyjście sumę wszystkich liczb oraz całkowitą liczbę liter we wszystkich słowach.
+
+\item \textbf{Wymazywanie znaków białych 2}\\
+Napisz program, który w zadanym pliku tekstowym usuwa białe znaki znajdujące się na końcu wierszy. Nazwa pliku powinna być argumentem wywołania programu.
+
+\item \textbf{Justowanie tekstu *}\\
+Plik tekstowy zawiera słowa oddzielone znakami białymi. Napisz program, który przeformatuje ten plik oddzielając słowa pojedynczymi spacjami i dzieląc tekst na linie tak, aby nie została przekroczona dopuszczalna długość linii, rozumiana jako liczba występujących w niej znaków, łącznie ze spacjami. Nazwa pliku oraz dopuszczalna długość linii powinny być zadawane jako argumenty wywołania. Program przetestuj na tekście \textit{Pana Tadeusza} i \textit{Hamleta}.
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

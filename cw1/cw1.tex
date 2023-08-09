@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 1, 2.03.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} kompilacja, standardowe wejście i wyjście, zmienne i wyrażenia, typy zmiennych, instrukcja warunkowa, wyrażenia logiczne, komentarze.
+
+\begin{enumerate}
+
+\item \textbf{Hello world!}\\
+Napisz program, który wyświetli Twoje imię. Wykomentuj poszczególne wiersze kodu i sprawdź, czy może on się skompilować bez któregoś z nich. Przyjrzyj się wyświetlonym komunikatom o błędach - czy mają one jakiś sens? Czy wiesz, dlaczego błędy te wystąpiły po zmianie kodu?
+
+\item \textbf{Operator dzielenia}\\
+Napisz program, który wykonuje dzielenie na dwóch liczbach podanych przez użytkownika i wyświetla dokładny wynik tego działania. Nie zapomnij przetestować swojego programu zarówno dla liczb całkowitych, jak i dziesiętnych.
+
+\item \textbf{Masa relatywistyczna}\\
+Napisz program wyznaczający relatywistyczny wzrost masy obiektu poruszającego się z prędkością $v$ (niekoniecznie $v\ll c$), pobieranej z klawiatury. Przetestuj program dla kilku reprezentatywnych wartości testowych.
+
+\item \textbf{Starszeństwo}\\
+Poproś użytkownika o podanie wieku dwóch osób i wskaż, która z nich jest starsza. Jeśli obie osoby mają powyżej 100 lat, program powinien zachować się w szczególny sposób.
+
+\item \textbf{Równanie kwadratowe}\\
+Napisz program znajdujący rozwiązania równania kwadratowego $ax^2+bx+c=0$. W przypadku, gdy $a=0$, program powinien rozwiązywać równanie liniowe. Zwróć uwagę na przypadki szczególne, zależne od wartości wyznacznika $\Delta$. Wartości $a,b,c$ powinny być wczytywane z klawiatury.
+
+\item \textbf{Prosty kalkulator}\\
+Napisz niewielki kalkulator, który pobiera na wejściu jeden z operatorów arytmetycznych oraz dwa argumenty, po czym wyświetla wynik obliczeń otrzymany na podstawie tych danych.
+
+\item \textbf{Kontrola dostępu}\\
+Zaimplementuj prosty system weryfikacji haseł. Po uruchomieniu program ten przyzna dostęp wyłącznie użytkownikowi o nazwie \textit{admin}, który dysponuje właściwym hasłem.
+
+\newpage
+\rhead{\textsc{Zadania domowe 1}}
+
+\item \textbf{Rok przestępny}\\
+Napisz program wczytujący z klawiatury liczbę całkowitą reprezentującą rok, a następnie wypisujący informację o tym, czy jest to rok przestępny, czy nie. \textit{Wskazówka:} Operator reszty z dzielenia to \%.
+
+\item \textbf{Indeks BMI}\\
+Napisz interaktywny program, który pyta użytkownika o masę ciała oraz wzrost, a następnie podaje komunikat o indeksie BMI użytkownika. Program powinien także porównać wyznaczony indeks BMI z ogólnie przyjętymi zakresami.
+
+\item \textbf{Wymiary walca}\\
+Napisz program, który pobierze od użytkownika dwie dodatnie liczby rzeczywiste charakteryzujące wymiary walca - promień podstawy oraz wysokość, a następnie wypisze na ekran wartość pola powierzchni walca i jego objętość. Wartość liczby $\pi$ występuje jako stała M\_PI w bibliotece <cmath>. Należy sprawdzić, czy podane przez użytkownika liczby są większe od zera, a w przeciwnym wypadku wypisać odpowiedni komunikat.
+
+\item \textbf{Prosty kalkulator 2 *}\\
+Składnia języka C++ udostępnia przydatną w niektórych sytuacjach instrukcję wyboru \textit{switch-case}. Zapoznaj się ze składnią instrukcji wyboru przy wykorzystaniu książek lub Internetu. Następnie napisz niewielki kalkulator, który pobiera na wejściu jeden z operatorów arytmetycznych oraz dwa argumenty, po czym wyświetla wynik obliczeń otrzymany na podstawie tych danych.
+
+\item \textbf{Kontrola dostępu 2}\\
+Rozszerz program kontrolujący hasła w taki sposób, aby akceptował wielu użytkowników, z których każdy ma swoje hasło. Zagwarantuj, aby właściwe hasła były przypisane właściwym użytkownikom. Udostępnij możliwość ponownego zalogowania użytkownika, jeśli pierwsza próba nie powiodła się. Zastanów się, jak łatwo (lub trudno) można zrealizować taką funkcjonalność w przypadku dużej liczby użytkowników i haseł.
+
+\item \textbf{Kontrola dostępu 3 *}\\
+Pomyśl o tym, jakie elementy lub funkcje języka ułatwiłyby dodawanie nowych użytkowników bez potrzeby ponownej kompilacji programu weryfikującego hasła (nie czuj się zmuszony do rozwiązania tego problemu za pomocą funkcji C++, które poznałeś na zajęciach. Możesz powrócić do tego zadania, gdy poznasz odpowiednie elementy języka na kolejnych zajęciach.
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 2, 9.03.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} pętle (for, while, do-while), biblioteka <cmath>.
+
+\begin{enumerate}
+
+\item \textbf{Iteracyjna silnia}\\
+Napisz program, który wczytuje ze standardowego wejścia liczbę naturalną i wypisuje na standardowe wyjście jej silnię. Pamiętaj, że $0!=1$.
+
+\item \textbf{Suma narastająca}\\
+Napisz program obliczający sumę narastającą liczb wprowadzanych przez użytkownika, który zakończy swoje działanie, gdy użytkownik wprowadzi 0.
+
+\item \textbf{Trójkąty połączone bokami}\\
+Napisz program, który wykorzystuje tylko dwa polecenia wyjściowe \textit{cout}, aby wygenerować wzór złożony z symboli kratki \# ułożonych w kształt dwóch trójkątów o boku N połączonych ze sobą bokami.
+
+\item \textbf{Łamacz haseł}\\
+Napisz program służący do weryfikacji haseł, który pobiera od użytkownika login i hasło aż do momentu, gdy wpisane dane umożliwią dostęp do systemu.
+
+\item \textbf{Liczby pierwsze}\\
+Napisz program sprawdzający, czy dana liczba naturalna jest pierwsza. Program powinien wczytywać liczbę ze standardowego wejścia i drukować na standardowe wyjście odpowiedni komunikat.
+
+\item \textbf{Sumowanie szeregu -- funkcja $\cos$}\\
+Funkcję $\cos$ można przedstawić w~postaci szeregu:
+\[
+\cos (x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \dots
+\]
+Napisz program obliczający wartość funkcji $\cos$ dla argumentu $x$ wczytywanego z~klawiatury. Obliczanie powinno odbywać się poprzez sumowanie szeregu. Sumowanie powinno zakończyć się, gdy kolejny wyraz sumy ma moduł mniejszy niż wybrana precyzja obliczeń.
+
+\item \textbf{Ankieter *}\\
+Napisz program udostępniający opcję sumowania wyników ankiety, w której mogą wystąpić trzy różne wartości. Dane wejściowe wprowadzane do programu to pytanie ankietowe oraz trzy możliwe odpowiedzi. Pierwszej odpowiedzi przypisywana jest wartość 1, drugiej 2, a trzeciej 3. Odpowiedzi są sumowane do chwili, w której użytkownik wprowadzi 0 -- wtedy program powinien pokazać wyniki ankiety. Postaraj się wygenerować wykres słupkowy, pokazujący wyniki przeskalowane w taki sposób, aby zmieściły się na ekranie bez względu na liczbę udzielonych odpowiedzi.
+
+
+\newpage
+\rhead{\textsc{Zadania domowe 2}}
+
+\item \textbf{Projektant wzorów \#}\\
+Wymyśl symetryczny kształt składający się ze znaków kratki, a następnie spróbuj napisać program, który go generuje, stosując się do znanego Ci ograniczenia dotyczącego tworzenia wzorów (zezwalającego na wykorzystanie tylko dwóch poleceń wyjściowych -- jednego, wyświetlającego znak kratki, i drugiego, wyprowadzającego znak końca wiersza).
+
+\item \textbf{Łamacz haseł 2}\\
+Zmodyfikuj program służący do weryfikacji haseł tak, aby dawał użytkownikowi tylko kilka szans na podanie poprawnego hasła (użycie łamacza haseł będzie trudne).
+
+\item \textbf{Rozkład na czynniki pierwsze}\\
+Napisz program rozkładający daną liczbę naturalną na czynniki pierwsze w następujący sposób. Sprawdzamy, czy liczba dzieli się przez 2. Jeżeli tak, to stwierdzamy, że dwójka występuje w jej rozkładzie na czynniki pierwsze, a samą liczbę dzielimy przez 2. Czynność tę powtarzamy, aż liczba przestanie być podzielna przez 2. Następnie powtarzamy tę samą procedurę badając podzielność przez 3, 4, itd., aż rozważana liczba stanie się równa 1.
+
+\item \textbf{Sumowanie szeregu -- inne funkcje}\\
+Napisz program obliczający wartość innych funkcji (np. $\sin$, $\exp$, $\ln$) metodą sumowania odpowiedniego szeregu. Sumowanie powinno zakończyć się po zsumowaniu liczby wyrazów wczytanej przez użytkownika. Zbadaj, ile wyrazów szeregu należy sumować, aby uzyskać dokładność wyniku na poziomie 1\%.
+
+\item \textbf{Arytmetyka binarna}\\
+Jeśli znasz arytmetykę binarną i wiesz, w jaki sposób można zamieniać liczby dziesiętne na binarne (i odwrotnie), spróbuj napisać programy, które wykonują takie konwersje dla liczb o nieograniczonej długości (możesz założyć, że są na tyle małe, iż mogą być przechowywane w standardowym typie \textit{int} języka C++.
+
+\item \textbf{Liczby heksadecymalne *}\\
+Czy znasz liczby heksadecymalne? Napisz program, który pozwoli użytkownikowi na podanie liczby w systemie binarnym, dziesiętnym lub heksadecymalnym, a następnie wyświetli ją w każdym z nich.
+
+\item \textbf{Konwerter systemów liczbowych **}\\
+Potrzebujesz dodatkowego wyzwania? Uogólnij kod poprzedniego zadania w taki sposób, aby stworzyć program, który przekształca dowolna liczbę z systemu szesnastkowego lub niższego na liczbę opartą na innym systemie.
+
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

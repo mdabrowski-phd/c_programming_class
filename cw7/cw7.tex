@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 7, 20.04.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} wskaźniki, referencje, tablice, dynamiczna alokacja pamięci.
+
+\begin{enumerate}
+
+\item \textbf{Implementacja funkcji \textsc{swap}}\\
+Napisz funkcję, która zamienia miejscami wartości swoich dwóch argumentów. Niewykonalne? -- przekaż do funkcji argumenty przy użyciu wskaźników albo referencji.
+
+\item \textbf{Funkcja o dwóch wartościach}\\
+Napisz funkcję, która pobiera dwa argumenty  i zwraca dwa odrębne wyniki. Jednym z wyników powinien być iloczyn obu argumentów, a drugim ich suma. Ponieważ funkcja może bezpośrednio zwracać tylko jedną wartość, druga powinna być zwracana poprzez parametr wskaźnikowy albo referencję.
+
+\item \textbf{Porównywanie liczb *}\\
+Napisz funkcję, która zwraca większą z dwóch podanych zmiennych całkowitych oraz umożliwia nadanie jej nowej wartości. Funkcji powinno dać się użyć następująco:
+\begin{verbatim}
+int a=3, b=7; max(a,b)=0;
+cut << a << " " << b << endl;
+\end{verbatim}
+Wynikiem działania tego fragmentu programu powinno być wypisanie liczb \textbf{3 0}.
+
+\item \textbf{Sformatowana tabliczka mnożenia}\\
+Napisz funkcję tworzącą dwuwymiarową tabliczkę mnożenia o dowolnej wielkości. Funkcja nie powinna wyświetlać tabliczki mnożenia, a jedynie ją generować. Następnie napisz drugą funkcję, której zadaniem jest wyświetlenie tabliczki mnożenia, ładnie sformatowanej. Przydziel pamięć potrzebną do stworzenia tablicy operatorem \textit{new}, po skończeniu pracy zwolnij pamięć operatorem \textit{delete}.
+
+\item \textbf{Element najmniejszy 2}\\
+Napisz program znajdujący najmniejszy element tablicy, posługując się wyłącznie wskaźnikami, a nie indeksami elementów. Program powinien wczytywać długość tablicy, tworzyć tę tablicę w pamięci, wypełniać losowymi liczbami rzeczywistymi z przedziału od 0 do 1, a następnie wypisywać elementy tablicy wraz z adresami oraz znaleziony adres i wartość elementu najmniejszego. Pamiętaj o zwolnieniu pamięci.
+
+\item \textbf{Odwrócony \textsc{Pan Tadeusz}}\\
+Zaimplementuj stos zmiennych typu \textit{string}. Korzystając z tej struktury napisz program, który wczytuje ze standardowego wejścia ciąg słów, a następnie wypisuje je na standardowe wyjście w odwrotnej kolejności, oddzielone spacjami. Program przetestuj na tekście \textit{Pana Tadeusza} i \textit{Hamleta}.
+
+\newpage
+\rhead{\textsc{Zadania domowe 7}}
+
+\item \textbf{Kwestionariusz osobowy}\\
+Napisz funkcję, która prosi użytkownika o podanie w dwóch osobnych zmiennych imienia i nazwiska, a następnie zamienia je miejscami. Funkcja powinna zwracać obie wartości za pośrednictwem dodatkowych parametrów wskaźnikowych (lub referencji) przekazywanych do niej podczas wywołania. \textit{Dodatkowo}: Zmodyfikuj program w taki sposób, aby prosił użytkownika o podanie nazwiska tylko wtedy, gdy w parametrze dotyczącym nazwiska funkcja otrzyma wskaźnik o wartości \textsc{NULL}.
+
+\item \textbf{Obliczenia statystyczne 2}\\
+Niech dana będzie próba losowa $N$ wartości $x_i$. Średnia i odchylenie standardowe z tej próby wynoszą odpowiednio:
+\[
+\mu_x=\frac{1}{N}\sum_{i=1}^{N} x_i \quad \quad \sigma_x=\sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i-\mu_x)^2}
+\]
+Następnie napisz program, który generuje próbę 1000 liczb pseudolosowych z rozkładu płaskiego w przedziale od 0 do 1, a następnie wypisuje na standardowe wyjście średnią i odchylenie standardowe. Skorzystaj z funkcji o deklaracji:
+\begin{verbatim}
+void statistics (double *s, double *m, double tab[], int size)
+\end{verbatim}
+
+\item \textbf{Odwrócony \textsc{Pan Tadeusz} 2 *}\\
+Czasem zamiast pisać samodzielnie potrzebną strukturę danych, warto rozejrzeć się dookoła -- prawdopodobnie ktoś wykonał już to zadanie. Korzystając ze struktury <stack> zawartej w bibliotece STL napisz program, który wczytuje ze standardowego wejścia ciąg słów, a następnie wypisuje je na standardowe wyjście w odwrotnej kolejności, oddzielone spacjami. Program przetestuj na tekście \textit{Pana Tadeusza} i \textit{Hamleta}.
+
+\item \textbf{Konwerter systemów liczbowych 2}\\
+Do przedstawienia zadanej liczby naturalne n w systemie pozycyjnym o podstawie m można posłużyć się stosem liczb całkowitych. Algorytm przedstawia się następująco: resztę z dzielenia n przez m odkładamy na stos, a następnie zastępujemy n ilorazem z dzielenia n przez m. Czynności te powtarzamy dopóki n jest niezerowe. Następnie kolejno zdejmujemy liczby ze stosu i wypisujemy od lewej do prawej z tym, że zamiast liczby 10 wypisujemy literę A, i tak dalej.
+
+\vspace{0.2 cm}
+
+Napisz program, który wczytuje ze standardowego wejścia liczby n oraz m, a następnie wypisuje na standardowe wyjście liczbę n w systemie pozycyjnym o podstawie m. Program powinien zawierać własną implementację stosu liczb całkowitych.
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

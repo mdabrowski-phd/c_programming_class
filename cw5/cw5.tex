@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 5, 30.03.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} utrwalenie wiadomości o funkcjach i tablicach, struktury.
+
+\begin{enumerate}
+
+\item \textbf{Wyszukiwanie binarne}\\
+Napisz program sprawdzający, czy posortowana tablica $\{x_0\dots x_{n-1}\}$ zawiera element docelowy $t$. Wiemy, że $n\ge 0$ oraz $x_0\le \dots\le x_{n-1}$. Odpowiedź jest przechowywana w zmiennej całkowitej $p$. Gdy $p=-1$, wartości docelowej $t$ nie ma w tablicy $\{x_0\dots x_{n-1}\}$. W przeciwnym razie $0\le p\le n-1$, a $t=x_p$.
+
+\vspace{0.2 cm}
+
+Szukanie binarne rozwiązuje problem przez pamiętanie zakresu w tablicy, która zawiera $t$ (jeśli tylko $t$ znajduje się gdziekolwiek w tablicy). Początkowo zakres obejmuje cała tablicę. Zakres jest pomniejszany przez porównanie jego elementu środkowego z $t$ i pozbycie się zbędnej połowy. Proces ten jest kontynuowany aż do odszukania elementu t w tablicy albo do chwili, kiedy zakres -- w którym powinien znajdować się element -- jest pusty.
+
+\item \textbf{Kontrola poprawności za pomocą sumy kontrolnej Luhna}\\
+Algorytm Luhna jest powszechnie używanym systemem służącym do przeprowadzania kontroli poprawności numerów identyfikacyjnych. W numerze źródłowym weź pod uwagę co drugą cyfrę (licząc od prawej) i pomnóż ją przez dwa. Następnie dodaj wartości wszystkich cyfr (jeśli podwojona wartość składa się z dwóch cyfr, potraktuj je oddzielnie). Numer identyfikacyjny jest poprawny, jeśli suma dzieli się przez 10.
+
+Napisz program, który odczytuje numer identyfikacyjny o dowolnej długości i przy użyciu algorytmu Luhna ustala, czy jest on poprawny. Program musi przetworzyć dany znak przed odczytaniem następnego.
+
+\item \textbf{Brzozowy gaj pana Antoniego}\\
+Pan Antoni jest właścicielem brzozowego gaju. Znajduje się w nim $n$ drzew o współrzędnych $(x_i,y_i)$. Aby nikt niepowołany nie mógł dostać się na teren gaju, zamierza ogrodzić go prostokątnym płotem. Ze względu na oszczędności płot powinien mieć możliwie najmniejszy obwód, jednocześnie obejmując wszystkie $n$ brzóz. Napisz program, który wyznaczy długość płotu według planu pana Antoniego. Plan zagospodarowania przestrzennego wymaga, żeby boki prostokąta były równoległe do osi $OX$ oraz $OY$ kartezjańskiego układu współrzędnych. 
+
+\newpage
+\rhead{\textsc{Zadania domowe 5}}
+
+\item \textbf{Diagram fazowy}\\
+Diagram fazowy ukazuje fazę substancji w danych warunkach zewnętrznych. Typowo zawiera linie podziału, wyznaczające miejsca współistnienia różnych faz w warunkach równowagi termodynamicznej. Rozważmy prosty model diagramu fazowego.
+
+\vspace{0.2 cm}
+
+Niech tablica $n\ge 2$ par liczb rzeczywistych $(a_i, b_i)$ definiuje $n$ prostych $y_i=a_i x+b_i$. Proste zostały uporządkowane w przedziale $[0,1]$ w taki sposób, że $y_i<y_{i+1}$ dla wszystkich wartości $i=\{0\dots n-2\}$ i wszystkich $x\in [0,1]$.
+Ujmując to mniej formalnie, proste te nie stykają się ani nie przecinają w pionowym pasie. Napisz program, który mając punkt $(0\le x_0\le 1,y_0)$ znajduje dwie proste, które z dołu i od góry ograniczają ten punkt.
+
+\item \textbf{13-znakowy standard ISBN}\\
+Jeśli podoba Ci się algorytm Luhna, napisz odpowiedni program dla innego systemu sprawdzającego poprawność cyfr,takiego jak 13-znakowy standard ISBN. Aplikacja mogłaby wczytywać cały numer identyfikacyjny i weryfikować go lub pobierać numer bez cyfry kontrolnej, a następnie ją generować.
+
+\item \textbf{Pracownia Elektroniczna}\\
+Student dostał na Pracowni Elektronicznej komplet specjalnych kabli. Każdy kabel składa się z drutu oraz baterii. $i$-ty drut może wytrzymać napięcie $d_i$ woltów, a $i$-ta bateria wytwarza napięcie $b_i$ woltów. Student buduje z kabli obwód elektryczny: wybiera druty, skręca je razem tworząc grubszy drut i robi z niego pętlę. W pętli napięcie jest sumą napięć wszystkich baterii (tzw. II prawo Kirchoffa), a skręcony drut może wytrzymać napięcie będące sumą napięć, które mogą wytrzymać poszczególne druty. Napisz program pozwalający studentowi stwierdzić, z ilu maksymalnie kabli może składać się obwód, aby zrobiona pętla nie przepaliła się.
+
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

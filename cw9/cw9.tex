@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 9, 4.05.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} dynamiczne struktury danych -- tablica, lista powiązana.
+
+\begin{enumerate}
+
+\item \textbf{Obsługa łańcuchów o zmiennej długości}\\
+Stwórz implementację opartą na dynamicznie alokowanych tablicach dla trzech funkcji obsługujących łańcuchy:
+
+\textsf{append} -- funkcja wymaga podania łańcucha i znaku, a w wyniku swojego działania dołącza ten znak do końca łańcucha.
+
+\textsf{concatenate} -- funkcja używa dwóch łańcuchów i dołącza znaki z drugiego do pierwszego.
+
+\textsf{characterAt} -- funkcja wymaga użycia łańcucha oraz odpowiedniej liczby, zwracając znak znajdujący się na wskazywanej przez nią pozycji w łańcuchu (pierwszy znak łańcucha ma indeks równy zeru).
+
+Napisz kod zakładając, że funkcja \textsf{characterAt} będzie wywoływana często, a dwie pozostałe stosunkowo rzadko. Względna wydajność operacji powinna odzwierciedlać częstotliwość ich stosowania.
+
+\item \textbf{Obsługa rejestru studentów o nieznanej liczbie elementów}\\
+Napisz funkcje przechowujące i modyfikujące kolekcję rejestrów studentów. Pojedynczy rejestr zawiera numer studenta i jego ocenę -- dane te są liczbami całkowitymi. Powinny zostać zaimplementowane następujące funkcje:
+
+\textsf{addRecord} -- funkcja używa wskaźnika do kolekcji rejestrów studentów, zawierających numery studentów i ich oceny, aby dodać do niej nowy rejestr z wypełnionymi danymi.
+
+\textsf{averageRecord} -- funkcja wymaga podania wskaźnika do kolekcji rejestrów studentów i zwraca średnią ocen studentów w kolekcji jako liczbę typu \textit{double}.
+
+Kolekcja może mieć dowolny rozmiar. Operacja \textsf{addRecord} będzie wykonywana często, więc powinna zostać zaimplementowana w wydajny sposób.
+
+\item \textbf{Implementacja łańcucha znaków przy użyciu listy powiązanej *}\\
+Stwórz implementację łańcuchów tekstowych, która zamiast wykorzystywać dynamicznie alokowane tablice, używa listy powiązanej zawierającej znaki. Tak więc będziesz mieć listę powiązaną, w której właściwymi danymi będą pojedyncze znaki. Pozwoli to na operacje powiększania bez potrzeby ponownego tworzenia łańcucha od nowa. Rozpocznij od zaimplementowania funkcji \textsf{append} i \textsf{characterAt}.
+
+
+\newpage
+\rhead{\textsc{Zadania domowe 9}}
+
+\item \textbf{Obsługa łańcuchów o zmiennej długości 2}\\
+Stwórz funkcję \textsf{substring} z następującymi trzema parametrami: zmienną typu \textsf{arrayString}, liczbą całkowitą oznaczającą początkową pozycję oraz liczbą całkowitą określającą długość łańcucha. Funkcja powinna zwrócić wskaźnik do nowo przydzielonego bloku pamięci zawierającego tablicę znaków. Musi ona zawierać znaki pochodzące z oryginalnego łańcucha, poczynając od określonej pozycji i o podanej długości. Pierwotny łańcuch nie powinien zostać zmodyfikowany.
+
+\item \textbf{Obsługa łańcuchów o zmiennej długości 3}\\
+Stwórz funkcję \textsf{replaceString}, która wykorzystuje trzy parametry, każdy o typie \textsf{arrayString}: \textsf{source}, \textsf{target} i \textsf{replaceText}. Funkcja zamienia każde wystąpienie łańcucha \textsf{target} w łańcuchu \textsf{source} łańcuchem \textsf{replaceText}.
+
+\item \textbf{Obsługa rejestru studentów o nieznanej liczbie elementów 2}\\
+Napisz funkcję \textsf{removeRecord}, która używa wskaźnika do struktury \textsf{studenCollection} oraz numeru studenta, a następnie usuwa z kolekcji rejestr z tym właśnie numerem.
+
+\item \textbf{Implementacja łańcucha znaków przy użyciu listy powiązanej 2 *}\\
+Zaimplementuj funkcję \textsf{concatenate} dla implementacji łańcuchów wykorzystującej listę powiązaną. Pamiętaj, że w przypadku wywołania \textsf{concatenate(s1, s2)}, w którym oba parametry są wskaźnikami do pierwszych węzłów odpowiednich list powiązanych, funkcja powinna kopiować każdy z węzłów \textsf{s2} i dołączać go na koniec \textsf{s1}. Oznacza to, że funkcja nie powinna po prostu przypisać polu next ostatniego węzła na liście \textsf{s1} adresu pierwszego węzła listy \textsf{s2}.
+
+\item \textbf{Implementacja łańcucha znaków przy użyciu listy powiązanej 3 *}\\
+Dodaj funkcję \textsf{removeChars} do implementacji łańcuchów wykorzystującej listę powiązaną. Funkcja powinna usuwać część znaków z łańcucha, korzystając z parametrów określających pozycję i długość. Upewnij się, że pamięć wykorzystywana przez usunięte węzły zostanie prawidłowo zwolniona.
+
+
+
+\end{enumerate}
+\vspace{1cm}
+\small Pytania, a także rozwiązania zadań, można wysyłać na adres: \textsc{mdabrowski@fuw.edu.pl}.
+\end{document}

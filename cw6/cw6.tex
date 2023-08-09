@@ -1,0 +1,163 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{fancyvrb}
+
+\renewcommand{\headrulewidth}{1.5pt}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\lhead{\textsc{Programowanie, grupa 1}}
+%\chead{mdabrowski@fuw.edu.pl}
+\rhead{\textsc{Ćwiczenia 6, 6.04.2017}}
+
+\begin{document}
+
+\small \textsc{Elementy języka C++:} debuggowanie kodu programu używając CodeBlocks.
+
+\begin{enumerate}
+
+\item \textbf{Ciąg Fibonacciego 2 -- znajdź i napraw błąd}\\
+
+\begin{Verbatim}[fontsize=\tiny]
+#include <iostream>
+using namespace std;
+
+int fibonacci (int n){
+	if ( n == 0 )
+		return 1;
+	return fibonacci( n - 1 ) + fibonacci( n - 2 );
+}
+
+int main(){
+	int n;
+	cout << "Enter the number to compute fibonacci for: " << endl;
+	cin >> n;
+	cout << fibonacci( n );
+}
+\end{Verbatim}
+
+\item \textbf{Złe potęgowanie -- znajdź i napraw błąd}\\
+
+\begin{Verbatim}[fontsize=\tiny]
+#include <iostream>
+using namespace std;
+
+int exponent (int base, int exp){
+	int running_value;
+	for ( int i = 0; i < exp; i++ )
+		running_value *= base;
+	return base;
+}
+
+int main(){
+	int base;
+	int exp;
+	cout << "Enter a base value: ";
+	cin >> base;
+	cout << "Enter an exponent: ";
+	exponent( exp, base );
+}
+\end{Verbatim}
+
+\item \textbf{Niekończąca się silnia  -- znajdź i napraw błąd}\\
+
+\begin{Verbatim}[fontsize=\tiny]
+#include <iostream>
+using namespace std;
+
+int main (){
+	int factorial = 1;
+	for ( int i = 0; i < 10; i++ )
+		factorial *= i;
+	int sum = 0;
+	for ( int i = 0; i < 10; i++ )
+		sum += i;
+	int factorial_without_two = 1;
+	for ( int i = 0; i < 10; i++ ){
+		if ( i == 2 )
+			continue;
+		factorial_without_two *= i;
+	}
+	int sum_without_two = 0;
+	for ( int i = 0; i < 10; i++ ){
+		if ( i = 2 )
+			continue;
+		sum_without_two += i;
+	}
+} 
+\end{Verbatim}
+
+\item \textbf{Sumowanie tablicy  -- znajdź i napraw błąd}\\
+
+\begin{Verbatim}[fontsize=\tiny]
+#include <iostream>
+using namespace std;
+
+int sumValues (int values[], int n){
+	int sum;
+	for ( int i = 0; i <= n; i++ )
+		sum += values[ i ];
+	return sum;
+}
+
+int main(){
+	int size;
+	cout << "Enter a size: ";
+	cin >> size;
+	int values[size];
+	int i;
+	while ( i < size ){
+		cout << "Enter value to add: ";
+		cin >> values[ ++i ];
+	}
+	cout << "Total sum is: " << sumValues( values, size );
+} 
+\end{Verbatim}
+
+\item \textbf{Korzystna lokata?  -- znajdź i napraw błąd}\\
+
+\begin{Verbatim}[fontsize=\tiny]
+#include <iostream>
+using namespace std;
+
+double computeInterest (double base_val, double rate, int years){
+	double final_multiplier;
+	for ( int i = 0; i < years; i++ ){
+		final_multiplier *= (1 + rate);
+	}
+	return base_val * final_multiplier;
+}
+
+int main (){
+	double base_val;
+	double rate;
+	int years;
+	cout << "Enter a base value: ";
+	cin >> base_val;
+	cout << "Enter an interest rate: ";
+	cin >> rate;
+	cout << "Enter the number of years to compound: ";
+	cin >> years;
+	cout << "After " << years << " you will have " << 
+	computeInterest( base_val, rate, years ) << " money" << endl;
+} 
+\end{Verbatim}
+
+\end{enumerate}
+
+\vspace{0.3cm}
+\small \textsc{Zadań domowych wyjątkowo brak.} Kolokwium dziś o godz. 17:00. Powodzenia!
+
+\end{document}
